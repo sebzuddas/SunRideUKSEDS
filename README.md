@@ -1,0 +1,12 @@
+# SunRideUKSEDS
+The Github repository for the Project Sunride entry into the UK SEDS competition.
+////////////////////////////////////////////////////////////////////////////////////////
+
+This is the 2021 Project SunRide Entry into the UK SEDS competition. 
+This directory contains the program used on the Arduino 33 BLE Sense microcontroller aboard the rocket used. 
+
+///////////////////////////////////////////////////////////////////////////////////////
+
+What does the program do?
+
+The Arduino
