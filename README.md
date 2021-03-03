@@ -9,4 +9,4 @@ This directory contains the program used on the Arduino 33 BLE Sense microcontro
 
 What does the program do?
 
-The Arduino
+The Arduino Nano BLE 33 Sense measures temperature, humidity, pressure, and uses an accelerometer to measure the x,y,z acceleration of the microcontroller.
