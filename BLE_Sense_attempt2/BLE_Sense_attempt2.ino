@@ -15,11 +15,17 @@
   
 const  int sensorPin = A0;
 
+// ATTENTION add time function to present the timestamp
 
+//ATTENTION write GPS code (found on separate file)
+
+// ATTENTION make program for launch/recovery detection (based on IMU and timestamp)
 
 void setup() {
  // ATTENTION please add commands to set the pins as OUTPUT,INPUT,HIGH,LOW for every sensor in this system
+ 
  // ATTENTION check if values should be defined as int or const int (there's something about saving location in main memory or cache I think)
+ 
 pinMode(sensorPin, INPUT);
  
   
