@@ -74,8 +74,8 @@ void loop() {
     Serial.println(z);
   }
   
- //C02 and N02 Sensor, Ashley's code for MQ130
-  int reading = analogRead(SensorPin); 
+ //C02 and N02 Sensor, Ashley's code for MQ135
+  int reading = analogRead(sensorPin); 
   Serial.print("Gas sensor reading: ");
   Serial.println(reading); //ATTENTION translate the output values  0 - 1048 to---->  actual percentages of air mixture. Use the mapping function to present them.
   delay(2);
