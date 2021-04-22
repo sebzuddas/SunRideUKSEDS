@@ -7,7 +7,7 @@ pinMode(sensorPin, INPUT);
 }
  
 void loop() {  
-  int reading = analogRead(SensorPin); 
+  int reading = analogRead(sensorPin); 
   Serial.print("Gas sensor reading: ");
   Serial.println(reading);
   delay(1000);
