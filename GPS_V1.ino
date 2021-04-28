@@ -35,6 +35,7 @@ void loop(){
       Serial.print("Altitude= ")
       Serial.println(gps.altitude.meters()); // Altitude in meters
 
+      // NEED LAUMCH PAD COORDS TO CALCULATE DISTANCE TO ROCKET
     }
   }
 }
