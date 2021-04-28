@@ -73,7 +73,15 @@ void loop() {
     Serial.print('\t');
     Serial.println(z);
   }
-  
+ 
+ //Detect launch with acceleration  !!!!!!!Don't know if this should go in void loop!!!!!
+ accelMag = sqrt(x^2 + y^2 + z^2)//Magnitude of the acceleration
+  if (accelMag > 5) {//If the acceleration is higher than 5gs then start the recording of the data.
+   //start recording
+   //need to make it so that the acceleration is high for like 500ms before recording starts
+   //Would it be possible to also save the data for the 20 or so seconds before the launch?
+  }
+ 
  //C02 and N02 Sensor, Ashley's code for MQ135
   int reading = analogRead(sensorPin); 
   Serial.print("Gas sensor reading: ");
