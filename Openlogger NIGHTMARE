@@ -1,9 +1,18 @@
 #include <SPI.h>
 #include <SD.h>
+#include <Wire.h>       //I2C Library
 
 int ledPin =  13;    // LED connected to digital pin 13, up for change
 //JSON
 const int chipSelect = 10;
+
+//I2C Temperature Pins
+  //SDA = Analog Pin 4
+  //SCL = Analog Pin 5
+  
+//IR Distance Sensor Pins
+  int IR1_pin = 2;
+  int IR2_pin = 3;
 
 File myFile;
 
@@ -11,9 +20,9 @@ void setup()
 { 
   pinMode(ledPin, OUTPUT);     
 
-  //Serial.begin(9600); //9600bps is default for OpenLog
+  Serial.begin(9600); //9600bps is default for OpenLog
   //Serial.begin(57600); //Much faster serial, used for testing buffer overruns on OpenLog
-  Serial.begin(115200); //Much faster serial, used for testing buffer overruns on OpenLog
+  //Serial.begin(115200); //Much faster serial, used for testing buffer overruns on OpenLog
 
   delay(1000); //Wait a second for OpenLog to init
 
@@ -95,3 +104,61 @@ void loop()
     delay(1000);                  // wait for a second
   }
 } 
+
+//Read the Configuration information (COMMANDS.txt)
+  File commandFile = SD.open("COMMANDS.txt");
+  if (commandFile)
+  {
+    Serial.println("Reading Command File");
+    
+    float decade = pow(10, (commandFile.available() - 1));
+    while(commandFile.available())
+    {
+      float temp = (commandFile.read() - '0');
+    }
+    Serial.print("Temperature = ");
+    Serial.print(temp);
+    Serial.println("ms");
+    commandFile.close();
+  }
+  else
+  {
+    Serial.println("Could not read command file.");
+    return;
+  }
+  //Write Log File Header
+  File logFile = SD.open("LOG.csv", FILE_WRITE);
+  if (logFile)
+  {
+    logFile.println(", , , ,"); //Just a leading blank line, incase there was previous data
+    String header = "ID, Light, Temp, IR1, IR2";
+    logFile.println(header);
+    logFile.close();
+    Serial.println(header);
+  }
+  else
+  {
+    Serial.println("Couldn't open log file");
+  }
+  
+  //Create Data string for storing to SD card
+  //We will use CSV Format  
+  String dataString = String(id) + ", " + String(temp_f) + ", " + String(IR1_val) + ", " + String(IR2_val); 
+  
+  //Open a file to write to
+  //Only one file can be open at a time
+  File logFile = SD.open("LOG.csv", FILE_WRITE);
+  if (logFile)
+  {
+    logFile.println(dataString);
+    logFile.close();
+    Serial.println(dataString);
+  }
+  else
+  {
+    Serial.println("Couldn't open log file");
+  }
+  
+  //Increment ID number
+  id++;
+}
