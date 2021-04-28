@@ -24,7 +24,7 @@ void setup(){
 }
 
 void loop(){
-  // This sketch displays information every time a new sentence is correctly encoded.
+  // Achieving values for latitude, longitude and altitude.
   while (ss.available() > 0){
     gps.encode(ss.read());
     if (gps.location.isUpdated()){
