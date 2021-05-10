@@ -1,7 +1,7 @@
 float P0 = 101325; //Atmospheric pressure at sea level
 float P; //Atmospheric pressure where the rocket is
 float T; // Temperature
-float H; // Height above sea level (Max altitude: highest value of H - initial value of H)
+float H; // Height above sea level (Max altitude = highest value of H - initial value of H)
 
 void setup() {
 Serial.begin(9600);
