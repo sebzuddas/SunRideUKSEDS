@@ -1,3 +1,5 @@
+// Hypsometric formula found here: https://physics.stackexchange.com/questions/333475/how-to-calculate-altitude-from-current-temperature-and-pressure
+
 float P0 = 101325; //Atmospheric pressure at sea level
 float P; //Atmospheric pressure where the rocket is
 float T; // Temperature
