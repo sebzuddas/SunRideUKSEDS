@@ -1,5 +1,5 @@
 #include <SPI.h>
-#include <SdFat.h>
+#include <SdFat.h>//Same as SD.h but allows longer file names
 SdFat SD;
 
 #define baseName "LaunchData"
@@ -8,15 +8,6 @@ const int CSPin = 4;
 
 const int baseNameSize = sizeof(baseName) - 1;
 char fileName[] = baseName "00.txt";
-
-#include <DHT.h>
-#define Type DHT11
-
-int sensorPin = 2;
-float temperature;
-float humidity;
-
-DHT HT(sensorPin,Type);
 
 unsigned long t;
  
@@ -51,10 +42,9 @@ void setup() {
  
 void loop() {
   String data = "";
+  //Add the other data here and add to data string
   t = millis();
-  temperature = HT.readTemperature();
-  humidity = HT.readHumidity();
-  data += String(t) + ", " + String(temperature) + ", " + String(humidity);
+  data += String(t) + ", " ;
  
   File dataFile = SD.open(fileName, FILE_WRITE);
   if (dataFile) {
