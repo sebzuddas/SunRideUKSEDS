@@ -11,6 +11,7 @@ Serial.begin(9600);
 
 void loop() {
 H = ((pow((P0/P), (1/5.257))-1)*(T + 273.15))/(0.0065);
+//H = 44330*(1-pow((P/P0), (1/5.257))) Alternative that uses a constant temperature of 15C, barometric formula
 Serial.println(H);
 delay(1000);
 }
