@@ -12,7 +12,6 @@ char fileName[] = baseName "00.txt";
 unsigned long t;
  
 void setup() {
-  HT.begin();
   Serial.begin(9600);
  
   Serial.println("Initializing SD card");
