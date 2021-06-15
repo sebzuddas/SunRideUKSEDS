@@ -6,6 +6,7 @@ const int CSPin = 4;
 const int baseNameSize = sizeof(baseName) - 1;
 char fileName[] = baseName "00.txt";
 unsigned long t;
+unsigned long Previous_time = 0;
 
 void setup() {
   Serial.begin(9600);
@@ -40,6 +41,21 @@ void loop() {
   t = millis();
   data += String(t) + ", " ;
  
+  if (millis() - Previous_time >= 30000) {
+    Previous_time = millis();
+    while (SD.exists(fileName)) {
+    if (fileName[baseNameSize + 1] != '9') {
+      fileName[baseNameSize + 1]++;
+    } else if (fileName[baseNameSize] != '9') {
+      fileName[baseNameSize + 1] = '0';
+      fileName[baseNameSize]++;
+    } else {
+      Serial.println("Can't create file name");
+      return;
+    }
+  }
+  }
+  
   File dataFile = SD.open(fileName, FILE_WRITE);
   if (dataFile) {
     dataFile.println(data);
