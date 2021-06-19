@@ -1,10 +1,10 @@
 #include <ArduinoBLE.h>
-
-#include <SPI.h>
-#include <SdFat.h>
 #include <Arduino_LSM9DS1.h>// Library for gyroscope
 #include <Arduino_LPS22HB.h>// Library for barometer
 #include <Arduino_HTS221.h>//Library for the temperature and humidity
+
+#include <SPI.h>
+#include <SdFat.h>
 SdFat SD;
 
 #define baseName "LaunchData"
@@ -105,7 +105,7 @@ void loop() {
   }
   }
 
-  data += String(t) + ", " + String(temperature) + ", " + String(humidity)+ ", " + String(pressure)+", " + String(gasSensor);
+  data += String(t) + ", " + String(temperature) + ", " + String(humidity)+ ", " + String(pressure)+", " + String(gasReading);
   File dataFile = SD.open(fileName, FILE_WRITE);
   if (dataFile) {
     dataFile.println(data);
