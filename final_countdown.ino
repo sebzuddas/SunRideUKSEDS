@@ -139,25 +139,35 @@ void loop() {
   float altitude1;
   int sats;
 
-  if (GPS.fix == 1) {
+//  if ((int)GPS.fix == 0){
+//    lat1 = 0;
+//    //lat2 = 'x';
+//    long1 = 0;
+//    //long2 = 'x';
+//    speed1 = 0;
+//    altitude1 = 0;
+//    sats = 0;
+//  }
+  //add delay with millis?
+  if (GPS.fix) {
     lat1 = (GPS.latitude);
-    lat2 = (GPS.lat);
+    //lat2 = (GPS.lat);
     long1 = (GPS.longitude);
-    long2 = (GPS.lon);
+    //long2 = (GPS.lon);
     speed1 = (GPS.speed);
     altitude1 = (GPS.altitude);
     sats = ((int)GPS.satellites);
   }
-
-  else{
-    lat1 = 0;
-    lat2 = 'x';
-    long1 = 0;
-    long2 = 'x';
-    speed1 = 0;
-    altitude1 = 0;
-    sats = 0;
-  }
+  
+//  else{
+//    lat1 = 0;
+//    lat2 = 'x';
+//    long1 = 0;
+//    long2 = 'x';
+//    speed1 = 0;
+//    altitude1 = 0;
+//    sats = 0;
+//  }
 
   //Function to store time since device was powered on/reset
   t = millis();
